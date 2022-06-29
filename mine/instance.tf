@@ -6,14 +6,14 @@
 #  version                = "~> 2.0"
 #
 #  name                   = "frontend-linux"
-#  instance_count         = 1
+#  instance_count         = var.environment_instance_settings[var.deploy_environment].instance_count
 #
 #  ami                    = data.aws_ami.aws-linux.id
-#  instance_type          = "t2.micro"
+#  instance_type          = var.environment_instance_settings[var.deploy_environment].instance_type
 #
-#  vpc_security_group_ids = [aws_security_group.sg_frontend.id]
-#  subnet_id              = module.vpc.public_subnets[1]
-#
+#  vpc_security_group_ids = [aws_security_group.sg-nodejs-instances.id]
+#  subnet_id = module.vpc.public_subnets[1]
+#  tags = var.environment_instance_settings[var.deploy_environment].tags
 #}
 
 resource "aws_instance" "node_instances" {
@@ -22,10 +22,10 @@ resource "aws_instance" "node_instances" {
   instance_type = var.environment_instance_settings[var.deploy_environment].instance_type
   #subnet_id = aws_subnet.subnet1.id
   subnet_id = module.vpc.public_subnets[1]
-  vpc_security_group_ids = [aws_security_group.sg-nodejs-instance.id]
+  vpc_security_group_ids = [aws_security_group.sg-nodejs-instances.id]
   key_name = var.ssh_key_name
   monitoring = var.environment_instance_settings[var.deploy_environment].monitoring
-  tags = {Environment = var.environment_map[var.deploy_environment]}
+  tags = var.environment_instance_settings[var.deploy_environment].tags
 
   connection {
     type        = "ssh"

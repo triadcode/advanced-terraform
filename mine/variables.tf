@@ -33,10 +33,10 @@ variable "environment_map" {
 }
 
 variable "environment_instance_settings" {
-  type = map(object({ instance_type = string, monitoring = bool, instance_count = number }))
+  type = map(object({ instance_type = string, monitoring = bool, instance_count = number, tags = map(string) }))
   default = {
-    "dev"   = { instance_type = "t2.micro", monitoring = false, instance_count = 2 },
-    "stage" = { instance_type = "t2.micro", monitoring = false, instance_count = 3 },
-    "prod"  = { instance_type = "t2.micro", monitoring = true, instance_count = 3 }
+    "dev"   = { instance_type = "t2.micro", monitoring = false, instance_count = 2, tags = {"environment" = "dev"}},
+    "stage" = { instance_type = "t2.micro", monitoring = false, instance_count = 3, tags = {"environment" = "stage"}},
+    "prod"  = { instance_type = "t2.micro", monitoring = true, instance_count = 3, tags = {"environment" = "prod"}}
   }
 }

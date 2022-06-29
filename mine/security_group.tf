@@ -31,7 +31,7 @@
 #  }
 #}
 
-resource "aws_security_group" "sg-nodejs-instance" {
+resource "aws_security_group" "sg-nodejs-instances" {
   name   = "nodejs_sg"
 #  vpc_id = aws_vpc.vpc1.id
   vpc_id = module.vpc.vpc_id
