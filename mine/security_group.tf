@@ -1,7 +1,3 @@
-# //////////////////////////////
-# SECURITY GROUP
-# //////////////////////////////
-
 #resource "aws_security_group" "sg_frontend" {
 #  name   = "sg_frontend"
 #  vpc_id = module.vpc.vpc_id
@@ -37,7 +33,8 @@
 
 resource "aws_security_group" "sg-nodejs-instance" {
   name   = "nodejs_sg"
-  vpc_id = aws_vpc.vpc1.id
+#  vpc_id = aws_vpc.vpc1.id
+  vpc_id = module.vpc.vpc_id
 
   ingress {
     from_port   = 80
