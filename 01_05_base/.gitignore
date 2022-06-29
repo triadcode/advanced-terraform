@@ -1,5 +1,4 @@
 *.terraform
-**.terraform.lock.hcl
 *.pem
 *.tfvars
 *.tfplan
@@ -9,4 +8,3 @@
 .terraform
 .DS_Store
 commands.txt
-.idea/**
