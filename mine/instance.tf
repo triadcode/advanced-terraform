@@ -34,3 +34,12 @@ resource "aws_instance" "node_instances" {
     private_key = file(var.ssh_key_path)
   }
 }
+
+# Create more nodejs machines using a custom module
+module "node_instance" {
+    source = "./modules/nodejs-instance"
+    instance_count = 2
+    environment_tags = {
+        "environment_id" = "development"
+    }
+}
