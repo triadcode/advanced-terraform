@@ -24,3 +24,6 @@ Check out some of my other courses on [LinkedIn Learning](https://www.linkedin.c
 
 [lil-course-url]: https://www.linkedin.com/learning/advanced-terraform
 [lil-thumbnail-url]: https://cdn.lynda.com/course/2823489/2823489-1604938909984-16x9.jpg
+
+# Changes
+The directory named "mine" contains a complete example of all the important examples proposed
